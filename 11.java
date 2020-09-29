@@ -1,3 +1,4 @@
+// This code is written by davidsqf.
 class Solution {
     public int maxArea(int[] height) {
         int length = height.length;
