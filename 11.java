@@ -1,4 +1,5 @@
 // This code is written by davidsqf.
+// Runtime beats 99.99% of java submissions, memory usage beats 98.15% of java submissions.
 class Solution {
     public int maxArea(int[] height) {
         int length = height.length;
