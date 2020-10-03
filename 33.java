@@ -1,6 +1,6 @@
 // This code is written by davidsqf.
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Search in Rotated Sorted Array.
-// Memory Usage: 38.4 MB, less than 95.16% of Java online submissions for Search in Rotated Sorted Array.
+// Memory Usage: 38.4 MB, less than 94.97% of Java online submissions for Search in Rotated Sorted Array.
 class Solution {
     public int search(int[] nums, int target) {
         // the pivot is the smallest item, find the pivot
@@ -28,7 +28,7 @@ class Solution {
         }
     }
     private int binary_search(int[] nums, int target, int lo, int hi) {
-        while (lo < hi) {
+        if (lo < hi) {
             // case: lo < hi
             int this_index = (lo + hi) / 2;
             int this_item = nums[this_index];
@@ -39,11 +39,14 @@ class Solution {
             } else {
                 return binary_search(nums, target, lo, this_index - 1);
             }
-        }
-        if (nums[lo] == target) {
-            return lo;
-        } else {
+        } else if (lo > hi) {
             return -1;
-        }
+        } else {
+            if (nums[lo] == target) {
+                return lo;
+            } else {
+                return -1;
+            }
+        } 
     }
 }
