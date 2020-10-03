@@ -1,6 +1,6 @@
 // This code is written by davidsqf.
 // Runtime: 0 ms, faster than 100.00% of Java online submissions for Find First and Last Position of Element in Sorted Array.
-// Memory Usage: 44 MB, less than 19.82% of Java online submissions for Find First and Last Position of Element in Sorted Array.
+// Memory Usage: 42.4 MB, less than 87.80% of Java online submissions for Find First and Last Position of Element in Sorted Array.
 class Solution {
     public int[] searchRange(int[] nums, int target) {
         int[] res = new int[2];
@@ -27,7 +27,7 @@ class Solution {
         return curr_right_most;
     }
     private int binary_search(int[] nums, int target, int lo, int hi) {
-        while (lo < hi) {
+        if (lo < hi) {
             // case: lo < hi
             int this_index = (lo + hi) / 2;
             int this_item = nums[this_index];
@@ -38,12 +38,14 @@ class Solution {
             } else {
                 return binary_search(nums, target, lo, this_index - 1);
             }
-        }
-        if (lo > hi) return -1; // handle the testcase of empty array, i.e, array length = 0
-        if (nums[lo] == target) {
-            return lo;
-        } else {
+        } else if (lo > hi) {
             return -1;
-        }
+        } else {
+            if (nums[lo] == target) {
+                return lo;
+            } else {
+                return -1;
+            }
+        } 
     }
 }
